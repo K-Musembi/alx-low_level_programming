@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * main - Entry
  *
@@ -5,14 +7,14 @@
  */
 int main(void)
 {
-	char line[] = _putchar;
-	int i;
-
-	while (line[i] != '0\')
-	{
-		_putchar(line[i]);
-		i++;
-	}
-	_putchar("\n");
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 	return (0);
 }
