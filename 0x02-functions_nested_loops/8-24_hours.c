@@ -20,7 +20,6 @@ void jack_bauer(void)
 	{
 
 		if (i < 10)
-			_putchar('0');
 
 		tens_h = i / 10;
 		ones_h = i % 10;
@@ -32,7 +31,6 @@ void jack_bauer(void)
 		while (j < minutes)
 		{
 			if (j < 10)
-				_putchar('0');
 
 			tens_m = j / 10;
 			ones_m = j % 10;
