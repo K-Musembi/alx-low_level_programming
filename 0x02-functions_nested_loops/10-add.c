@@ -2,6 +2,8 @@
 
 /**
  * add - adds two integers
+ *@num_one: input number
+ *@num_two: input number
  *
  * Return: result
  */
