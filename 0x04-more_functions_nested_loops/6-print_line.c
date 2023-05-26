@@ -16,18 +16,12 @@ void print_line(int n)
 	}
 	else
 	{
-		while (count <= n)
+		while (count < n)
 		{
 			_putchar('_');
-
-			if (count == n)
-			{
-				_putchar('\n');
-			}
 
 			count++;
 		}
 	}
-
 	_putchar('\n');
 }
