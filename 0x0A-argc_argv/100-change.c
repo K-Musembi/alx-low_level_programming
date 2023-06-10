@@ -39,9 +39,9 @@ int main(int argc, char *argv[])
 			value3 = 2;
 		else
 			value3 = 3;
-	}
-	balance = value1 + value2 + value3;
+		balance = value1 + value2 + value3;
 
-	printf("%d\n", balance);
+		printf("%d\n", balance);
+	}
 	return (0);
 }
