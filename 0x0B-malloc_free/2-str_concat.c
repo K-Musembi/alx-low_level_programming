@@ -19,8 +19,10 @@ char *str_concat(char *s1, char *s2)
 	ptr = malloc(length * sizeof(char) + 1);
 	if (ptr == NULL)
 		return (NULL);
-	if (s1 == NULL && s2 == NULL)
-		ptr = '\0';
+	if (s1 == NULL)
+		s1 = '\0';
+	if (s2 == NULL)
+		s2 = '\0';
 	for (i = 0; s1[i]; i++)
 		ptr[i] = s1[i];
 	i = 0;
