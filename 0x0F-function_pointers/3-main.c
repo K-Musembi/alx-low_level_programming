@@ -19,6 +19,6 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	result = atoi(get_op_func(num1, operation, num2);
+	result = atoi(get_op_func(*int)(num1, num2);
 	return (result);
 }
