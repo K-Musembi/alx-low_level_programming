@@ -9,7 +9,7 @@
 */
 int main(int argc, char **argv)
 {
-	int res;
+	/*int res;*/
 
 	if (argc != 3)
 	{
@@ -17,8 +17,8 @@ int main(int argc, char **argv)
 		exit(97);
 	}
 
-	res = copy(argv[1], argv[2]);
-	dprintf(STDOUT_FILENO, "%d", res);
+	copy(argv[1], argv[2]);
+	/*dprintf(STDOUT_FILENO, "%d", res);*/
 
 	return (0);
 }
@@ -33,17 +33,16 @@ int main(int argc, char **argv)
 int copy(const char *one, const char *two)
 {
 	int fd1, fd2, count1, count2;
-	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	char *buf;
+	char buf[1024];
 
-	fd1 = open(one, O_RDWR, mode);
+	fd1 = open(one, O_RDONLY);
 	if (fd1 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: can't read from file ONE\n");
 		exit(98);
 	}
 
-	fd2 = open(two, O_RDWR | O_CREAT | O_TRUNC, 0664);
+	fd2 = open(two, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd2 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: cant't write to file two\n");
@@ -51,11 +50,12 @@ int copy(const char *one, const char *two)
 	}
 	if (chmod(two, 0664) == -1)
 		return (-1);
-
-	buf = malloc(sizeof(char) * strlen(one));
-	count1 = read(fd1, buf, strlen(buf));
-	count2 = write(fd2, buf, strlen(buf));
-
+	while ((count1 = read(fd1, buf, 1024)) > 0)
+	{
+		count2 = write(fd2, buf, count1);
+		if (count2 != count1)
+			return (-1);
+	}
 	if (count1 == -1 || count2 == -1)
 		return (-1);
 	if (close(fd1) == -1)
@@ -68,6 +68,5 @@ int copy(const char *one, const char *two)
 		dprintf(STDERR_FILENO, "Error: can't close fd %d", fd2);
 		exit(100);
 	}
-	free(buf);
 	return (1);
 }
