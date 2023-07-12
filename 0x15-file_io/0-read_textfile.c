@@ -26,7 +26,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	count = read(fd, path, letters);
-	num = write(fd, path, count);
+	num = write(STDIN_FILENO, path, count);
 	if (num == -1)
 	{
 		free(path);
